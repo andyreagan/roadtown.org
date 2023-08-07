@@ -90,6 +90,15 @@
         #navbar {
             visibility: hidden;
         }
+
+        #timer span {
+            font-size: smaller;
+            padding-right: .25em;
+        }
+
+        #timer {
+            color: #9fc7aa;
+        }
     </style>
     <!-- <link rel="stylesheet" href="/static/turkeytrot/css/fonts.css">  -->
 </head>
@@ -121,11 +130,18 @@
                                     type="button" class="btn btn-primary btn-lg"
                                     style="margin-left: 1rem; margin-bottom: .5rem;">Become a Sponsor →</button></a>
                         </li>
+
                     </ul>
-                </div>
+                    <div class="d-flex" style="margin-left: 1em;" id="timer">
+                        <p id="days"></p>
+                        <p id="hours"></p>
+                        <p id="minutes"></p>
+                        <p id="seconds"></p>
+                    </div>                       
+                </div>             
             </div>
         </nav>
-    </header>
+    </header> 
     <section id="page-1" style="background-color:#eeecde;">
         <div class="container text-center" style="padding-bottom: 2rem; height: 100%;">
             <h1 class="display-1" style="padding-top:2rem; margin-bottom: 0; font-family: YAFdJnTJPB4-0;">Roadtown
@@ -453,6 +469,42 @@
                     $('#navbar').css('visibility', 'hidden');
                 }
             });
+
+            function makeTimer() {
+
+//		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");	
+    var endTime = new Date("18 November 2023 9:00:00 GMT+05:00");			
+        endTime = (Date.parse(endTime) / 1000);
+
+        var now = new Date();
+        now = (Date.parse(now) / 1000);
+
+        var timeLeft = endTime - now;
+
+        var days = Math.floor(timeLeft / 86400); 
+        var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+        var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
+        var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+
+        // if (hours < "10") { hours = "0" + hours; }
+        // if (minutes < "10") { minutes = "0" + minutes; }
+        // if (seconds < "10") { seconds = "0" + seconds; }
+
+        function pluralize(x) {
+            if (x == 1) {
+                return ''
+            }
+            return 's'
+        }
+
+        $("#days").html(Math.abs(days) + "<span>day" + pluralize(Math.abs(days)) + "</span>");
+        $("#hours").html(hours + "<span>hour" + pluralize(hours) + "</span>");
+        $("#minutes").html(minutes + "<span>minute" + pluralize(minutes) + "</span>");
+        $("#seconds").html(seconds + "<span>second" + pluralize(seconds) + "</span>");		
+
+}
+
+setInterval(function() { makeTimer(); }, 1000);            
         });
 
     </script>
