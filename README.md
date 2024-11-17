@@ -17,6 +17,7 @@ http://localhost:8000/
 Deploy with
 
 ```
+python3 manage.py collectstatic
 fly deploy
 ```
 
