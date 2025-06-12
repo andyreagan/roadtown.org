@@ -2,7 +2,7 @@ from django.template.response import TemplateResponse
 
 
 def trot_main_page(request):
-    return TemplateResponse(request, "trot2024bootstrap.html", {})
+    return TemplateResponse(request, "trot2025bootstrap.html", {})
 
 
 def trot_past_years(request, year):
