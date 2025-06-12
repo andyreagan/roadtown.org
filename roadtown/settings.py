@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['ROADTOWN_DJ_SECRET_KEY']
+SECRET_KEY = os.environ["ROADTOWN_DJ_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('ROADTOWN_DJ_DEBUG', 'false').lower() in {'true', 't', 'yes'}
+DEBUG = os.environ.get("ROADTOWN_DJ_DEBUG", "false").lower() in {"true", "t", "yes"}
 
 ALLOWED_HOSTS = ["roadtown.org", "localhost"]
 
@@ -66,7 +66,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'django.middleware.locale.LocaleMiddleware', 
+    "django.middleware.locale.LocaleMiddleware",
     # 'cms.middleware.user.CurrentUserMiddleware',
     # 'cms.middleware.page.CurrentPageMiddleware',
     # 'cms.middleware.toolbar.ToolbarMiddleware',
@@ -78,7 +78,7 @@ ROOT_URLCONF = "roadtown.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [''],
+        "DIRS": [""],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -146,11 +146,11 @@ STATIC_ROOT = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LANGUAGES = [
-    ('en', 'English'),
-    ('de', 'German'),
+    ("en", "English"),
+    ("de", "German"),
 ]
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 # CMS_TEMPLATES = [
 #     ('home.html', 'Home page template'),
@@ -160,7 +160,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # THUMBNAIL_HIGH_RESOLUTION = True
-# 
+#
 # THUMBNAIL_PROCESSORS = (
 #     'easy_thumbnails.processors.colorspace',
 #     'easy_thumbnails.processors.autocrop',
