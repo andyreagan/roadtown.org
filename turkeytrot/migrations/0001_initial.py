@@ -45,9 +45,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "event_location",
-                    models.CharField(
-                        blank=True, help_text="Event location", max_length=255
-                    ),
+                    models.CharField(blank=True, help_text="Event location", max_length=255),
                 ),
                 (
                     "event_address",
@@ -82,9 +80,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "parking_info",
-                    wagtail.fields.RichTextField(
-                        blank=True, help_text="Parking information"
-                    ),
+                    wagtail.fields.RichTextField(blank=True, help_text="Parking information"),
                 ),
                 (
                     "sponsor_description",
@@ -151,9 +147,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "about_us",
-                    wagtail.fields.RichTextField(
-                        blank=True, help_text="About the organization"
-                    ),
+                    wagtail.fields.RichTextField(blank=True, help_text="About the organization"),
                 ),
                 (
                     "library_images",

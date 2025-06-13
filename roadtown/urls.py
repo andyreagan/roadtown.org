@@ -30,10 +30,8 @@ urlpatterns = (
         path("django-admin/", admin.site.urls),
         path("admin/", include(wagtailadmin_urls)),
         path("documents/", include(wagtaildocs_urls)),
-        
         # Legacy trot URLs (redirect to Wagtail pages)
         path("trot/", include("turkeytrot.urls")),
-        
         # Wagtail pages - keep this last
         path("", include(wagtail_urls)),
     ]

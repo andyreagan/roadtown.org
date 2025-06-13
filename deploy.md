@@ -37,7 +37,7 @@ fly ssh console -C "python manage.py migrate"
 ## Volume Details
 
 - **Database**: `/data/db.sqlite3` (persistent)
-- **Media files**: `/data/media/` (persistent) 
+- **Media files**: `/data/media/` (persistent)
 - **Static files**: Served directly by Fly.io from `/code/static/`
 
 ## Admin Access

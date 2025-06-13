@@ -8,14 +8,13 @@
         <meta name="description"
               content="The Roadtown Turkey Trot is a 5K run-walk on {{ page.event_date|date:'M j, Y' }}, the Saturday before Thanksgiving, in beautiful Shutesbury, Massachusetts." />
         {% if page.hero_image %}
-        {% image page.hero_image width-1200 as hero_img %}
-        <meta property="og:image"
-              content="{{ hero_img.url }}" />
+            {% image page.hero_image width-1200 as hero_img %}
+            <meta property="og:image" content="{{ hero_img.url }}" />
         {% endif %}
         <meta property="og:description"
               content="The Roadtown Turkey Trot is a 5K run-walk on {{ page.event_date|date:'M j, Y' }}, the Saturday before Thanksgiving, in beautiful Shutesbury, Massachusetts." />
-        <meta property="og:title" content="{{ page.title_override|default:page.title }}" />
-        
+        <meta property="og:title"
+              content="{{ page.title_override|default:page.title }}" />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
                 crossorigin="anonymous"></script>
@@ -26,7 +25,6 @@
               rel="stylesheet"
               integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
               crossorigin="anonymous">
-        
         <style>
         p,li {
             font-size: 1.5rem !important;
@@ -137,403 +135,473 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             {% if page.donate_url %}
-                            <li class="nav-item">
-                                <a href="{{ page.donate_url }}" target="_blank">
-                                    <button type="button" class="btn btn-primary btn-lg"
-                                            style="margin-left: 1rem; margin-bottom: .5rem">Donate →</button>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="{{ page.donate_url }}" target="_blank">
+                                        <button type="button"
+                                                class="btn btn-primary btn-lg"
+                                                style="margin-left: 1rem;
+                                                       margin-bottom: .5rem">Donate →</button>
+                                    </a>
+                                </li>
                             {% endif %}
-                            
                             {% if page.registration_url %}
-                            <li class="nav-item">
-                                <a href="{{ page.registration_url }}">
-                                    <button type="button" class="btn btn-primary btn-lg"
-                                            style="margin-left: 1rem; margin-bottom: .5rem">Register Now →</button>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="{{ page.registration_url }}">
+                                        <button type="button"
+                                                class="btn btn-primary btn-lg"
+                                                style="margin-left: 1rem;
+                                                       margin-bottom: .5rem">Register Now →</button>
+                                    </a>
+                                </li>
                             {% else %}
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-primary btn-lg disabled"
-                                        style="margin-left: 1rem; margin-bottom: .5rem">Registration Coming Soon</button>
-                            </li>
+                                <li class="nav-item">
+                                    <button type="button"
+                                            class="btn btn-primary btn-lg disabled"
+                                            style="margin-left: 1rem;
+                                                   margin-bottom: .5rem">Registration Coming Soon</button>
+                                </li>
                             {% endif %}
-                            
                             <li class="nav-item">
                                 <a href="#sponsorsection">
-                                    <button type="button" class="btn btn-primary btn-lg"
-                                            style="margin-left: 1rem; margin-bottom: .5rem">Become a Sponsor →</button>
+                                    <button type="button"
+                                            class="btn btn-primary btn-lg"
+                                            style="margin-left: 1rem;
+                                                   margin-bottom: .5rem">Become a Sponsor →</button>
                                 </a>
                             </li>
-                            
                             {% if page.results_url %}
-                            <li class="nav-item">
-                                <a href="{{ page.results_url }}">
-                                    <button type="button" class="btn btn-primary btn-lg"
-                                            style="margin-left: 1rem; margin-bottom: .5rem">Results →</button>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="{{ page.results_url }}">
+                                        <button type="button"
+                                                class="btn btn-primary btn-lg"
+                                                style="margin-left: 1rem;
+                                                       margin-bottom: .5rem">Results →</button>
+                                    </a>
+                                </li>
                             {% endif %}
-                            
                             {% if page.photos_url %}
-                            <li class="nav-item">
-                                <a href="{{ page.photos_url }}">
-                                    <button type="button" class="btn btn-primary btn-lg"
-                                            style="margin-left: 1rem; margin-bottom: .5rem">Photos →</button>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="{{ page.photos_url }}">
+                                        <button type="button"
+                                                class="btn btn-primary btn-lg"
+                                                style="margin-left: 1rem;
+                                                       margin-bottom: .5rem">Photos →</button>
+                                    </a>
+                                </li>
                             {% endif %}
                         </ul>
-                        
                         {% if page.event_date %}
-                        <div class="d-flex" style="margin-left: 1em;" id="timer">
-                            <p id="days"></p>
-                            <p id="hours"></p>
-                            <p id="minutes"></p>
-                            <p id="seconds"></p>
-                        </div>
+                            <div class="d-flex" style="margin-left: 1em;" id="timer">
+                                <p id="days"></p>
+                                <p id="hours"></p>
+                                <p id="minutes"></p>
+                                <p id="seconds"></p>
+                            </div>
                         {% endif %}
                     </div>
                 </div>
             </nav>
         </header>
-        
         <!-- Hero Section -->
         <section id="page-1" style="background-color:#eeecde;">
-            <div class="container text-center" style="padding-bottom: 2rem; height: 100%;">
-                <h1 class="display-1" style="padding-top:2rem; margin-bottom: 0; font-family: YAFdJnTJPB4-0;">
-                    {{ page.title_override|default:page.title }}
-                </h1>
-                
+            <div class="container text-center"
+                 style="padding-bottom: 2rem;
+                        height: 100%">
+                <h1 class="display-1"
+                    style="padding-top:2rem;
+                           margin-bottom: 0;
+                           font-family: YAFdJnTJPB4-0">{{ page.title_override|default:page.title }}</h1>
                 {% if page.hero_image %}
-                <div class="row" style="padding-bottom: 2rem;">
-                    <div class="col-3"></div>
-                    <div class="col-6">
-                        {% image page.hero_image width-500 as hero_img_500 %}
-                        <img src="{{ hero_img_500.url }}" alt="{{ page.hero_image.title }}" class="img-fluid">
+                    <div class="row" style="padding-bottom: 2rem;">
+                        <div class="col-3"></div>
+                        <div class="col-6">
+                            {% image page.hero_image width-500 as hero_img_500 %}
+                            <img src="{{ hero_img_500.url }}"
+                                 alt="{{ page.hero_image.title }}"
+                                 class="img-fluid">
+                        </div>
+                        <div class="col-3"></div>
                     </div>
-                    <div class="col-3"></div>
-                </div>
                 {% endif %}
-                
                 <div class="row">
-                    {% if page.event_location %}
-                    <h2>{{ page.event_location }}</h2>
-                    {% endif %}
+                    {% if page.event_location %}<h2>{{ page.event_location }}</h2>{% endif %}
                     <p class="small">A benefit for The Friends of The MN Spear Memorial Library</p>
                 </div>
-                
                 <!-- Action buttons -->
-                <div class="row row-cols-1 row-cols-lg-6" style="padding-bottom: 2rem;" id="sticky">
+                <div class="row row-cols-1 row-cols-lg-6"
+                     style="padding-bottom: 2rem"
+                     id="sticky">
                     <div class="col-1"></div>
-                    
                     {% if page.donate_url %}
-                    <div class="col" style="padding-bottom: 1rem;">
-                        <a href="{{ page.donate_url }}" target="_blank">
-                            <button type="button" class="btn btn-primary btn-lg">Donate →</button>
-                        </a>
-                    </div>
+                        <div class="col" style="padding-bottom: 1rem;">
+                            <a href="{{ page.donate_url }}" target="_blank">
+                                <button type="button" class="btn btn-primary btn-lg">Donate →</button>
+                            </a>
+                        </div>
                     {% endif %}
-                    
                     {% if page.registration_url %}
-                    <div class="col" style="padding-bottom: 1rem;">
-                        <a href="{{ page.registration_url }}">
-                            <button type="button" class="btn btn-primary btn-lg">Register Now →</button>
-                        </a>
-                    </div>
+                        <div class="col" style="padding-bottom: 1rem;">
+                            <a href="{{ page.registration_url }}">
+                                <button type="button" class="btn btn-primary btn-lg">Register Now →</button>
+                            </a>
+                        </div>
                     {% else %}
-                    <div class="col" style="padding-bottom: 1rem;">
-                        <button type="button" class="btn btn-primary btn-lg disabled">Registration Coming Soon</button>
-                    </div>
+                        <div class="col" style="padding-bottom: 1rem;">
+                            <button type="button" class="btn btn-primary btn-lg disabled">Registration Coming Soon</button>
+                        </div>
                     {% endif %}
-                    
                     <div class="col" style="padding-bottom: 1rem;">
                         <a href="#sponsorsection">
                             <button type="button" class="btn btn-primary btn-lg">Be a Sponsor →</button>
                         </a>
                     </div>
-                    
                     <div class="col-1"></div>
                 </div>
             </div>
         </section>
-        
         <!-- Event Details -->
         {% if page.event_date or page.event_location or page.event_address %}
-        <section id="page-2" style="background-color:whitesmoke;">
-            <div class="container" style="padding-bottom: 2rem; padding-top: 3rem; height: 100%;">
-                {% if page.event_date %}
-                <h1 style="color:#000000;font-family:YAFdJn5d8s0-0;line-height:1.10053252em;font-weight:800;font-size:3rem;">
-                    {{ page.event_date|date:"l, M j, Y" }}
-                </h1>
-                <h1 style="color:#000000;font-family:YAFdJn5d8s0-0;line-height:1.10053252em;font-weight:800;font-size:3rem;">
-                    {{ page.event_date|date:"g:i A" }}
-                </h1>
-                {% endif %}
-                
-                {% if page.event_location %}
-                <h1 style="color:#000000;font-family:YAFdJn5d8s0-0;line-height:1.10053252em;font-weight:800;font-size:3rem;">
-                    @ {{ page.event_location }}
-                </h1>
-                {% endif %}
-                
-                {% if page.event_address %}
-                <h3 style="color:#737373">{{ page.event_address }}</h3>
-                {% endif %}
-                
-                <div class="row row-cols-1 row-cols-lg-2 text-center" style="padding-bottom: 2rem;">
-                    {% if page.hero_image %}
-                    <div class="col-lg-4" style="padding-bottom: 1rem;">
-                        {% image page.hero_image width-400 as hero_img_400 %}
-                        <img src="{{ hero_img_400.url }}" alt="{{ page.hero_image.title }}" class="img-fluid">
-                    </div>
+            <section id="page-2" style="background-color:whitesmoke;">
+                <div class="container"
+                     style="padding-bottom: 2rem;
+                            padding-top: 3rem;
+                            height: 100%">
+                    {% if page.event_date %}
+                        <h1 style="color:#000000;
+                                   font-family:YAFdJn5d8s0-0;
+                                   line-height:1.10053252em;
+                                   font-weight:800;
+                                   font-size:3rem">{{ page.event_date|date:"l, M j, Y" }}</h1>
+                        <h1 style="color:#000000;
+                                   font-family:YAFdJn5d8s0-0;
+                                   line-height:1.10053252em;
+                                   font-weight:800;
+                                   font-size:3rem">{{ page.event_date|date:"g:i A" }}</h1>
                     {% endif %}
-                    <div class="col-sm-4 text-center">
-                        <a href="https://www.google.com/maps/place/{{ page.event_address|urlencode }}">
-                            <button type="button" class="btn btn-secondary btn-lg">Get Directions</button>
-                        </a>
+                    {% if page.event_location %}
+                        <h1 style="color:#000000;
+                                   font-family:YAFdJn5d8s0-0;
+                                   line-height:1.10053252em;
+                                   font-weight:800;
+                                   font-size:3rem">@ {{ page.event_location }}</h1>
+                    {% endif %}
+                    {% if page.event_address %}<h3 style="color:#737373">{{ page.event_address }}</h3>{% endif %}
+                    <div class="row row-cols-1 row-cols-lg-2 text-center"
+                         style="padding-bottom: 2rem">
+                        {% if page.hero_image %}
+                            <div class="col-lg-4" style="padding-bottom: 1rem;">
+                                {% image page.hero_image width-400 as hero_img_400 %}
+                                <img src="{{ hero_img_400.url }}"
+                                     alt="{{ page.hero_image.title }}"
+                                     class="img-fluid">
+                            </div>
+                        {% endif %}
+                        <div class="col-sm-4 text-center">
+                            <a href="https://www.google.com/maps/place/{{ page.event_address|urlencode }}">
+                                <button type="button" class="btn btn-secondary btn-lg">Get Directions</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
         {% endif %}
-        
         <!-- About Event -->
         {% if page.about_event %}
-        <section id="page-3" style="background-color:#9fc7aa;">
-            <div class="container" style="padding-bottom: 2rem; padding-top: 3rem; height: 100%;">
-                <div style="max-width:800px; padding-bottom: 10rem;">
-                    <h1 class="display-2" style="color:#737373;font-family:YAFdJjTk5UU-0;line-height:1.39285652em;font-weight:700;">
-                        About the event
-                    </h1>
-                    {{ page.about_event|richtext }}
+            <section id="page-3" style="background-color:#9fc7aa;">
+                <div class="container"
+                     style="padding-bottom: 2rem;
+                            padding-top: 3rem;
+                            height: 100%">
+                    <div style="max-width:800px; padding-bottom: 10rem;">
+                        <h1 class="display-2"
+                            style="color:#737373;
+                                   font-family:YAFdJjTk5UU-0;
+                                   line-height:1.39285652em;
+                                   font-weight:700">About the event</h1>
+                        {{ page.about_event|richtext }}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
         {% endif %}
-        
         <!-- Route Information -->
         {% if page.route_description or page.parking_info %}
-        <section id="page-4" style="background-color:whitesmoke;">
-            <div class="container" style="padding-bottom: 15rem; padding-top: 5rem; height: 100%;">
-                <div class="row">
-                    <div class="col-sm-6" style="padding-bottom: 1rem;">
-                        <h1 style="color:#9fc7aa;font-family:YAFdJjTk5UU-0;line-height:1.39285652em;font-weight:700;font-size:3rem;">
-                            The Route
-                        </h1>
-                        {% if page.route_description %}
-                        {{ page.route_description|richtext }}
-                        {% endif %}
-                        
-                        {% if page.parking_info %}
-                        <h2 style="color:#9fc7aa;font-family:YAFdJjTk5UU-0;line-height:1.38281142em;font-weight:700;">Parking</h2>
-                        {{ page.parking_info|richtext }}
+            <section id="page-4" style="background-color:whitesmoke;">
+                <div class="container"
+                     style="padding-bottom: 15rem;
+                            padding-top: 5rem;
+                            height: 100%">
+                    <div class="row">
+                        <div class="col-sm-6" style="padding-bottom: 1rem;">
+                            <h1 style="color:#9fc7aa;
+                                       font-family:YAFdJjTk5UU-0;
+                                       line-height:1.39285652em;
+                                       font-weight:700;
+                                       font-size:3rem">The Route</h1>
+                            {% if page.route_description %}{{ page.route_description|richtext }}{% endif %}
+                            {% if page.parking_info %}
+                                <h2 style="color:#9fc7aa;
+                                           font-family:YAFdJjTk5UU-0;
+                                           line-height:1.38281142em;
+                                           font-weight:700">Parking</h2>
+                                {{ page.parking_info|richtext }}
+                            {% endif %}
+                        </div>
+                        {% if page.route_image %}
+                            <div class="col-sm-6" style="padding-bottom: 1rem;">
+                                {% image page.route_image width-600 as route_img %}
+                                <img src="{{ route_img.url }}"
+                                     alt="{{ page.route_image.title }}"
+                                     loading="lazy"
+                                     style="width:100%;
+                                            height:100%;
+                                            display:block;
+                                            object-fit:cover">
+                            </div>
                         {% endif %}
                     </div>
-                    
-                    {% if page.route_image %}
-                    <div class="col-sm-6" style="padding-bottom: 1rem;">
-                        {% image page.route_image width-600 as route_img %}
-                        <img src="{{ route_img.url }}" 
-                             alt="{{ page.route_image.title }}" 
-                             loading="lazy" 
-                             style="width:100%;height:100%;display:block;object-fit:cover;">
-                    </div>
-                    {% endif %}
                 </div>
-            </div>
-        </section>
+            </section>
         {% endif %}
-        
         <!-- Sponsors -->
         {% if page.sponsor_description or page.sponsors %}
-        <section id="sponsorsection" style="background-color:#eeecde;">
-            <div class="container" style="padding-bottom: 4em; padding-top: 3rem; height: 100%; max-width: 800px;">
-                <div>
-                    <h1 style="color:#9fc7aa;font-family:YAFdJjTk5UU-0;line-height:1.39285652em;font-weight:700;font-size:3rem;" class="text-center">
-                        Become a Sponsor
-                    </h1>
-                    {% if page.sponsor_description %}
-                    {{ page.sponsor_description|richtext }}
-                    {% endif %}
+            <section id="sponsorsection" style="background-color:#eeecde;">
+                <div class="container"
+                     style="padding-bottom: 4em;
+                            padding-top: 3rem;
+                            height: 100%;
+                            max-width: 800px">
+                    <div>
+                        <h1 style="color:#9fc7aa;
+                                   font-family:YAFdJjTk5UU-0;
+                                   line-height:1.39285652em;
+                                   font-weight:700;
+                                   font-size:3rem"
+                            class="text-center">Become a Sponsor</h1>
+                        {% if page.sponsor_description %}{{ page.sponsor_description|richtext }}{% endif %}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
         {% endif %}
-        
         <!-- Sponsor Display -->
         {% if page.sponsors %}
-        <section id="page-sponsor-display" style="background-color:white;">
-            <div class="container" style="padding-bottom: 5em; padding-top: 3rem; height: 100%; max-width: 1000px;">
-                <div>
-                    <div class="row">
-                        <img src="{% static 'turkeytrot/images/sponsors.png' %}" alt="" style="max-width: 700px" class="mx-auto">
-                    </div>
-                    
-                    {% for sponsor_level in page.sponsors %}
-                    <h2 class="text-center">
-                        <b>{{ sponsor_level.value.level_name }}</b>
-                    </h2>
-                    <div class="row" style="padding-bottom: 5rem;">
-                        {% for sponsor in sponsor_level.value.sponsors %}
-                        <div class="col-lg-6 text-center">
-                            {% if sponsor.logo %}
-                            {% image sponsor.logo width-350 as sponsor_img %}
-                            <img src="{{ sponsor_img.url }}" 
-                                 alt="{{ sponsor.name }}" 
-                                 style="max-width:350px; padding-top: 1rem">
-                            {% else %}
-                            <h5 style="padding-top: 1rem">{{ sponsor.name }}</h5>
-                            {% endif %}
+            <section id="page-sponsor-display" style="background-color:white;">
+                <div class="container"
+                     style="padding-bottom: 5em;
+                            padding-top: 3rem;
+                            height: 100%;
+                            max-width: 1000px">
+                    <div>
+                        <div class="row">
+                            <img src="{% static 'turkeytrot/images/sponsors.png' %}"
+                                 alt=""
+                                 style="max-width: 700px"
+                                 class="mx-auto">
                         </div>
+                        {% for sponsor_level in page.sponsors %}
+                            <h2 class="text-center">
+                                <b>{{ sponsor_level.value.level_name }}</b>
+                            </h2>
+                            <div class="row" style="padding-bottom: 5rem;">
+                                {% for sponsor in sponsor_level.value.sponsors %}
+                                    <div class="col-lg-6 text-center">
+                                        {% if sponsor.logo %}
+                                            {% image sponsor.logo width-350 as sponsor_img %}
+                                            <img src="{{ sponsor_img.url }}"
+                                                 alt="{{ sponsor.name }}"
+                                                 style="max-width:350px;
+                                                        padding-top: 1rem">
+                                        {% else %}
+                                            <h5 style="padding-top: 1rem">{{ sponsor.name }}</h5>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
                         {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
-            </div>
-        </section>
+            </section>
         {% endif %}
-        
         <!-- About Us -->
         {% if page.about_us %}
-        <section id="page-6" style="background-color:#ffbd59;">
-            <div class="container" style="padding-bottom: 2rem; padding-top: 4rem; height: 100%; max-width: 950px;">
-                <h1 style="color:#ffffff;direction:ltr;font-family:YAFdJn5d8s0-0;font-weight:800;font-size:3rem; padding-bottom: 2rem;" class="text-center">
-                    About Us
-                </h1>
-                <div>
-                    {% if page.about_image %}
-                    {% image page.about_image width-380 as about_img %}
-                    <img src="{{ about_img.url }}" 
-                         class="rounded float-end" 
-                         style="max-width: 380px;padding-left: 1rem; padding-bottom: 1rem;" 
-                         alt="{{ page.about_image.title }}">
-                    {% endif %}
-                    {{ page.about_us|richtext }}
+            <section id="page-6" style="background-color:#ffbd59;">
+                <div class="container"
+                     style="padding-bottom: 2rem;
+                            padding-top: 4rem;
+                            height: 100%;
+                            max-width: 950px">
+                    <h1 style="color:#ffffff;
+                               direction:ltr;
+                               font-family:YAFdJn5d8s0-0;
+                               font-weight:800;
+                               font-size:3rem;
+                               padding-bottom: 2rem"
+                        class="text-center">About Us</h1>
+                    <div>
+                        {% if page.about_image %}
+                            {% image page.about_image width-380 as about_img %}
+                            <img src="{{ about_img.url }}"
+                                 class="rounded float-end"
+                                 style="max-width: 380px;
+                                        padding-left: 1rem;
+                                        padding-bottom: 1rem"
+                                 alt="{{ page.about_image.title }}">
+                        {% endif %}
+                        {{ page.about_us|richtext }}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
         {% endif %}
-        
         <!-- Future Library -->
         {% if page.library_images %}
-        <section id="page-7" style="background-color:#9fc7aa;">
-            <div class="container" style="padding-bottom: 2rem; padding-top: 4rem; height: 100%;">
-                <h1 class="text-center" style="color:#ffffff;direction:ltr;font-family:YAFdJn5d8s0-0;font-weight:800;font-size:3rem;padding-bottom:2rem;">
-                    The Future Shutesbury Library
-                </h1>
-                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1500">
-                    <div class="carousel-indicators">
-                        {% for image_block in page.library_images %}
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}" 
-                                {% if forloop.first %}class="active" aria-current="true"{% endif %} 
-                                aria-label="Slide {{ forloop.counter }}"></button>
-                        {% endfor %}
-                    </div>
-                    <div class="carousel-inner">
-                        {% for image_block in page.library_images %}
-                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            {% image image_block.value.image width-1200 as library_img %}
-                            <img src="{{ library_img.url }}" class="d-block w-100" alt="{{ image_block.value.image.title }}">
-                            {% if image_block.value.caption %}
-                            <div class="carousel-caption d-none d-md-block">
-                                <p style="text-shadow: 2px 2px 2px black; font-weight: 800;">
-                                    {{ image_block.value.caption }}
-                                </p>
-                            </div>
-                            {% endif %}
+            <section id="page-7" style="background-color:#9fc7aa;">
+                <div class="container"
+                     style="padding-bottom: 2rem;
+                            padding-top: 4rem;
+                            height: 100%">
+                    <h1 class="text-center"
+                        style="color:#ffffff;
+                               direction:ltr;
+                               font-family:YAFdJn5d8s0-0;
+                               font-weight:800;
+                               font-size:3rem;
+                               padding-bottom:2rem">The Future Shutesbury Library</h1>
+                    <div id="carouselExampleCaptions"
+                         class="carousel slide"
+                         data-bs-ride="carousel"
+                         data-bs-interval="1500">
+                        <div class="carousel-indicators">
+                            {% for image_block in page.library_images %}
+                                <button type="button"
+                                        data-bs-target="#carouselExampleCaptions"
+                                        data-bs-slide-to="{{ forloop.counter0 }}"
+                                        {% if forloop.first %}class="active" aria-current="true"{% endif %}
+                                        aria-label="Slide {{ forloop.counter }}"></button>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
+                        <div class="carousel-inner">
+                            {% for image_block in page.library_images %}
+                                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                    {% image image_block.value.image width-1200 as library_img %}
+                                    <img src="{{ library_img.url }}"
+                                         class="d-block w-100"
+                                         alt="{{ image_block.value.image.title }}">
+                                    {% if image_block.value.caption %}
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <p style="text-shadow: 2px 2px 2px black; font-weight: 800;">{{ image_block.value.caption }}</p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <button class="carousel-control-prev"
+                                type="button"
+                                data-bs-target="#carouselExampleCaptions"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next"
+                                type="button"
+                                data-bs-target="#carouselExampleCaptions"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
-            </div>
-        </section>
+            </section>
         {% endif %}
-        
         <!-- Contact -->
         <section id="page-8" style="background-color:white;">
-            <div class="container" style="padding-bottom: 5em; padding-top: 3rem; height: 100%; max-width: 1000px;">
+            <div class="container"
+                 style="padding-bottom: 5em;
+                        padding-top: 3rem;
+                        height: 100%;
+                        max-width: 1000px">
                 <div class="row">
                     <div class="col-lg-6">
                         <p>
-                            <img src="{% static 'turkeytrot/images/contact-us.png' %}" alt="" style="max-width: 400px;">
+                            <img src="{% static 'turkeytrot/images/contact-us.png' %}"
+                                 alt=""
+                                 style="max-width: 400px">
                         </p>
-                        
                         {% if page.mailing_address %}
-                        <p style="text-transform:uppercase;letter-spacing:0.08em;font-family:YAFdtQi73Xs-0;color:#ffbd59;font-weight:700;margin-bottom:.1rem;">
-                            MAILING ADDRESS
-                        </p>
-                        <p style="font-family:YAFdtQi73Xs-0;color:#000000;font-weight:600;margin-bottom:2rem;" class="contactsub">
-                            {{ page.mailing_address|linebreaks }}
-                        </p>
+                            <p style="text-transform:uppercase;
+                                      letter-spacing:0.08em;
+                                      font-family:YAFdtQi73Xs-0;
+                                      color:#ffbd59;
+                                      font-weight:700;
+                                      margin-bottom:.1rem">MAILING ADDRESS</p>
+                            <p style="font-family:YAFdtQi73Xs-0;
+                                      color:#000000;
+                                      font-weight:600;
+                                      margin-bottom:2rem"
+                               class="contactsub">{{ page.mailing_address|linebreaks }}</p>
                         {% endif %}
-                        
                         {% if page.email_address %}
-                        <p style="font-family:YAFdtQi73Xs-0;color:#ffbd59;font-weight:700;margin-bottom:.1rem;">
-                            EMAIL ADDRESS
-                        </p>
-                        <a href="mailto:{{ page.email_address }}" style="text-decoration:none">
-                            <p style="font-family:YAFdtQi73Xs-0;color:#000000;font-weight:600;margin-bottom:2rem;" class="contactsub">
-                                {{ page.email_address }}
-                            </p>
-                        </a>
+                            <p style="font-family:YAFdtQi73Xs-0;
+                                      color:#ffbd59;
+                                      font-weight:700;
+                                      margin-bottom:.1rem">EMAIL ADDRESS</p>
+                            <a href="mailto:{{ page.email_address }}" style="text-decoration:none">
+                                <p style="font-family:YAFdtQi73Xs-0;
+                                          color:#000000;
+                                          font-weight:600;
+                                          margin-bottom:2rem"
+                                   class="contactsub">{{ page.email_address }}</p>
+                            </a>
                         {% endif %}
-                        
                         {% if page.phone_number %}
-                        <p style="font-family:YAFdtQi73Xs-0;color:#ffbd59;font-weight:700;margin-bottom:.1rem;">
-                            PHONE NUMBER
-                        </p>
-                        <a href="tel:{{ page.phone_number }}" style="text-decoration:none">
-                            <p style="font-family:YAFdtQi73Xs-0;color:#000000;font-weight:600;margin-bottom:2rem;" class="contactsub">
-                                {{ page.phone_number }}
-                            </p>
-                        </a>
+                            <p style="font-family:YAFdtQi73Xs-0;
+                                      color:#ffbd59;
+                                      font-weight:700;
+                                      margin-bottom:.1rem">PHONE NUMBER</p>
+                            <a href="tel:{{ page.phone_number }}" style="text-decoration:none">
+                                <p style="font-family:YAFdtQi73Xs-0;
+                                          color:#000000;
+                                          font-weight:600;
+                                          margin-bottom:2rem"
+                                   class="contactsub">{{ page.phone_number }}</p>
+                            </a>
                         {% endif %}
-                        
                         <p>
                             {% if page.facebook_url %}
-                            <a href="{{ page.facebook_url }}">
-                                <img src="{% static 'turkeytrot/images/b3b8f94346a7e0dab177511448fc9a23.svg' %}" 
-                                     alt="Blue Facebook Social Media Icon" 
-                                     loading="lazy" 
-                                     style="max-height:90px;padding-right:15px;">
-                            </a>
+                                <a href="{{ page.facebook_url }}">
+                                    <img src="{% static 'turkeytrot/images/b3b8f94346a7e0dab177511448fc9a23.svg' %}"
+                                         alt="Blue Facebook Social Media Icon"
+                                         loading="lazy"
+                                         style="max-height:90px;
+                                                padding-right:15px">
+                                </a>
                             {% endif %}
-                            
                             {% if page.instagram_url %}
-                            <a href="{{ page.instagram_url }}">
-                                <img src="{% static 'turkeytrot/images/73c52b3062179f2d1401e60d4413eb99.png' %}" 
-                                     loading="lazy" 
-                                     style="max-height:90px;padding-right:15px;">
-                            </a>
+                                <a href="{{ page.instagram_url }}">
+                                    <img src="{% static 'turkeytrot/images/73c52b3062179f2d1401e60d4413eb99.png' %}"
+                                         loading="lazy"
+                                         style="max-height:90px;
+                                                padding-right:15px">
+                                </a>
                             {% endif %}
                         </p>
                     </div>
                     <div class="col-lg-6" style="height: 100%;">
-                        <div class="align-middle text-center" style="padding-top: 20px; padding-bottom: 75px;">
+                        <div class="align-middle text-center"
+                             style="padding-top: 20px;
+                                    padding-bottom: 75px">
                             {% if page.registration_url %}
-                            <a href="{{ page.registration_url }}">
-                                <button type="button" class="btn btn-secondary btn-lg">Register Today</button>
-                            </a>
+                                <a href="{{ page.registration_url }}">
+                                    <button type="button" class="btn btn-secondary btn-lg">Register Today</button>
+                                </a>
                             {% else %}
-                            <button type="button" class="btn btn-secondary btn-lg disabled">Registration Coming Soon</button>
+                                <button type="button" class="btn btn-secondary btn-lg disabled">Registration Coming Soon</button>
                             {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
         {% if page.event_date %}
-        <script>
+            <script>
             $(document).ready(function () {
                 var stickyTop = $('#sticky').offset().top;
 
@@ -575,7 +643,7 @@
 
                 setInterval(function () { makeTimer(); }, 1000);
             });
-        </script>
+            </script>
         {% endif %}
     </body>
 </html>

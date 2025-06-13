@@ -48,10 +48,8 @@ INSTALLED_APPS = [
     "wagtail.admin",
     "wagtail",
     "wagtail.contrib.table_block",
-    
     "modelcluster",
     "taggit",
-    
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -59,7 +57,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    
     "turkeytrot",
 ]
 
@@ -73,7 +70,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
-    
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
@@ -104,9 +100,10 @@ WSGI_APPLICATION = "roadtown.wsgi.application"
 
 # Use volume for database in production, local for development
 import os
-if os.path.exists('/data'):
+
+if os.path.exists("/data"):
     # Production: use volume
-    DATABASE_PATH = '/data/db.sqlite3'
+    DATABASE_PATH = "/data/db.sqlite3"
 else:
     # Development: use local directory
     DATABASE_PATH = BASE_DIR / "db.sqlite3"
@@ -172,9 +169,9 @@ X_FRAME_OPTIONS = "SAMEORIGIN"
 MEDIA_URL = "/media/"
 
 # Use volume for media in production, local for development
-if os.path.exists('/data'):
+if os.path.exists("/data"):
     # Production: use volume
-    MEDIA_ROOT = '/data/media'
+    MEDIA_ROOT = "/data/media"
 else:
     # Development: use local directory
     MEDIA_ROOT = BASE_DIR / "media"

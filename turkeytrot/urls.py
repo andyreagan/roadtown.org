@@ -16,6 +16,7 @@ def trot_year_redirect(request, year):
         # Try to find the specific year page in Wagtail
         try:
             from .models import TurkeyTrotPage
+
             page = TurkeyTrotPage.objects.filter(slug__icontains=str(year)).first()
             if page:
                 return redirect(page.url, permanent=True)
