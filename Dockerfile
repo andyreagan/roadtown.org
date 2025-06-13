@@ -1,9 +1,16 @@
-ARG PYTHON_VERSION=3.11-slim-buster
+ARG PYTHON_VERSION=3.11-slim-bookworm
 
 FROM python:${PYTHON_VERSION}
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+
+# Update system packages and install a newer SQLite
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    sqlite3 \
+    libsqlite3-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /code
 

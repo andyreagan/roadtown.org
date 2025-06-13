@@ -1,2 +1,4 @@
 Django==5.1.1
 gunicorn==23.0.0
+wagtail>=6.0,<7.0
+Pillow>=8.2.0

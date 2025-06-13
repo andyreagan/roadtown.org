@@ -26,51 +26,55 @@ SECRET_KEY = os.environ["ROADTOWN_DJ_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("ROADTOWN_DJ_DEBUG", "false").lower() in {"true", "t", "yes"}
 
-ALLOWED_HOSTS = ["roadtown.org", "localhost"]
+ALLOWED_HOSTS = ["roadtown.org", "roadtown.fly.dev", "localhost"]
+
+# CSRF trusted origins for Wagtail admin
+CSRF_TRUSTED_ORIGINS = [
+    "https://roadtown.org",
+    "https://roadtown.fly.dev",
+]
 
 # Application definition
 INSTALLED_APPS = [
-    # 'djangocms_admin_style',
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail",
+    "wagtail.contrib.table_block",
+    
+    "modelcluster",
+    "taggit",
+    
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    
     "turkeytrot",
-    # for cms, if we want it:
-    # 'django.contrib.sites',
-    # 'cms',
-    # 'menus',
-    # 'treebeard',
-    # 'sekizai',
-    # 'filer',
-    # 'easy_thumbnails',
-    # 'mptt',
-    # 'djangocms_link',
-    # 'djangocms_file',
-    # 'djangocms_picture',
-    # 'djangocms_video',
-    # 'djangocms_googlemap',
-    # 'djangocms_snippet',
-    # 'djangocms_style',
 ]
 
 SITE_ID = 1
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django.middleware.locale.LocaleMiddleware",
-    # 'cms.middleware.user.CurrentUserMiddleware',
-    # 'cms.middleware.page.CurrentPageMiddleware',
-    # 'cms.middleware.toolbar.ToolbarMiddleware',
-    # 'cms.middleware.language.LanguageCookieMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
 ROOT_URLCONF = "roadtown.urls"
@@ -98,10 +102,19 @@ WSGI_APPLICATION = "roadtown.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# Use volume for database in production, local for development
+import os
+if os.path.exists('/data'):
+    # Production: use volume
+    DATABASE_PATH = '/data/db.sqlite3'
+else:
+    # Development: use local directory
+    DATABASE_PATH = BASE_DIR / "db.sqlite3"
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": DATABASE_PATH,
     }
 }
 
@@ -157,13 +170,22 @@ X_FRAME_OPTIONS = "SAMEORIGIN"
 # ]
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
 
-# THUMBNAIL_HIGH_RESOLUTION = True
-#
-# THUMBNAIL_PROCESSORS = (
-#     'easy_thumbnails.processors.colorspace',
-#     'easy_thumbnails.processors.autocrop',
-#     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-#     'easy_thumbnails.processors.filters'
-# )
+# Use volume for media in production, local for development
+if os.path.exists('/data'):
+    # Production: use volume
+    MEDIA_ROOT = '/data/media'
+else:
+    # Development: use local directory
+    MEDIA_ROOT = BASE_DIR / "media"
+
+# Wagtail settings
+WAGTAIL_SITE_NAME = "Roadtown Turkey Trot"
+WAGTAILADMIN_BASE_URL = "https://roadtown.org"
+
+# Search backend
+WAGTAILSEARCH_BACKENDS = {
+    "default": {
+        "BACKEND": "wagtail.search.backends.database",
+    }
+}
