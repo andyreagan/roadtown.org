@@ -189,6 +189,16 @@
                                     </a>
                                 </li>
                             {% endif %}
+                            {% if page.volunteer_url %}
+                                <li class="nav-item">
+                                    <a href="{{ page.volunteer_url }}" target="_blank">
+                                        <button type="button"
+                                                class="btn btn-primary btn-lg"
+                                                style="margin-left: 1rem;
+                                                       margin-bottom: .5rem">Volunteer →</button>
+                                    </a>
+                                </li>
+                            {% endif %}
                         </ul>
                         {% if page.event_date %}
                             <div class="d-flex" style="margin-left: 1em;" id="timer">
@@ -255,6 +265,27 @@
                             <button type="button" class="btn btn-primary btn-lg">Be a Sponsor →</button>
                         </a>
                     </div>
+                    {% if page.results_url %}
+                        <div class="col" style="padding-bottom: 1rem;">
+                            <a href="{{ page.results_url }}" target="_blank">
+                                <button type="button" class="btn btn-primary btn-lg">Results →</button>
+                            </a>
+                        </div>
+                    {% endif %}
+                    {% if page.photos_url %}
+                        <div class="col" style="padding-bottom: 1rem;">
+                            <a href="{{ page.photos_url }}" target="_blank">
+                                <button type="button" class="btn btn-primary btn-lg">Photos →</button>
+                            </a>
+                        </div>
+                    {% endif %}
+                    {% if page.volunteer_url %}
+                        <div class="col" style="padding-bottom: 1rem;">
+                            <a href="{{ page.volunteer_url }}" target="_blank">
+                                <button type="button" class="btn btn-primary btn-lg">Volunteer →</button>
+                            </a>
+                        </div>
+                    {% endif %}
                     <div class="col-1"></div>
                 </div>
             </div>
