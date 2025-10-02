@@ -436,13 +436,17 @@
                                 {% for sponsor in sponsor_level.value.sponsors %}
                                     <div class="col-lg-6 text-center">
                                         {% if sponsor.logo %}
-                                            {% image sponsor.logo width-350 as sponsor_img %}
-                                            <img src="{{ sponsor_img.url }}"
-                                                 alt="{{ sponsor.name }}"
-                                                 style="max-width:350px;
-                                                        padding-top: 1rem">
+                                            <a href="{% if sponsor.website_url %}{{ sponsor.website_url }}{% else %}#{% endif %}" {% if sponsor.website_url %}target="_blank"{% endif %}>
+                                                {% image sponsor.logo width-350 as sponsor_img %}
+                                                <img src="{{ sponsor_img.url }}"
+                                                     alt="{{ sponsor.name }}"
+                                                     style="max-width:350px;
+                                                            padding-top: 1rem">
+                                            </a>
                                         {% else %}
-                                            <h5 style="padding-top: 1rem">{{ sponsor.name }}</h5>
+                                            <a href="{% if sponsor.website_url %}{{ sponsor.website_url }}{% else %}#{% endif %}" {% if sponsor.website_url %}target="_blank"{% endif %} style="text-decoration:none">
+                                                <h5 style="padding-top: 1rem">{{ sponsor.name }}</h5>
+                                            </a>
                                         {% endif %}
                                     </div>
                                 {% endfor %}
