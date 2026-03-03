@@ -1,0 +1,28 @@
+services:
+  web:
+    build: .
+    container_name: roadtown-web
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+    environment:
+      - ROADTOWN_DJ_SECRET_KEY=${ROADTOWN_DJ_SECRET_KEY}
+      - ROADTOWN_DJ_DEBUG=false
+    networks:
+      - internal
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: roadtown-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    networks:
+      - internal
+    depends_on:
+      - web
+
+networks:
+  internal:
+    driver: bridge

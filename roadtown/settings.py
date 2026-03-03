@@ -26,7 +26,7 @@ SECRET_KEY = os.environ["ROADTOWN_DJ_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("ROADTOWN_DJ_DEBUG", "false").lower() in {"true", "t", "yes"}
 
-ALLOWED_HOSTS = ["roadtown.org", "roadtown.fly.dev", "localhost"]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "roadtown.org,www.roadtown.org,roadtown.fly.dev,localhost").split(",")
 
 # CSRF trusted origins for Wagtail admin
 CSRF_TRUSTED_ORIGINS = [
