@@ -28,6 +28,10 @@ ssh synology "export PATH=/var/packages/ContainerManager/target/usr/bin:\$PATH &
 ssh synology "export PATH=/var/packages/ContainerManager/target/usr/bin:\$PATH && cd /volume1/docker/roadtown && docker compose exec web python manage.py migrate"
 ```
 
+## Backups
+
+Daily 02:00 via DSM task `docker-backup` → `~/cron-tasks/roadtown-backup/roadtown-backup.sh` (log beside it). Writes `~/Backup/roadtown/roadtown-YYYY-MM-DD.tar.gz` (sqlite `.backup` + whole project dir incl. `.env`), thinned to ~13 snapshots; Backblaze syncs the home dir.
+
 ## Save Changes
 
 ```bash
